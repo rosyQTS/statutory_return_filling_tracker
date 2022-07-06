@@ -3,17 +3,14 @@
 <html lang="en">
 
 <head>
+       <meta charset="utf-8">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"></link>
 
-<!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <meta charset="utf-8">
 
-<link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></head>
+<link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></link>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 <link rel="stylesheet" href="superAdminDashboard.css"></link>
 <link rel="stylesheet" href="change_password.css"></link>
@@ -22,11 +19,12 @@
 
 </style>
 <body>
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+   <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                 <h4>  Logo</h4>
+               <h4>Logo</h4>
                 <div class="header__pane ml-auto">
+
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
                             <span class="hamburger-box">
@@ -48,20 +46,22 @@
 <!-- ----------------------mobile view k liye------------------------ -->            
             <div class="app-header__menu">
                       <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn"><img src="../images/download3.png" class="navlogo"> Super Admin </button>
+  <button onclick="myFunction()" class="dropbtn"><img src="../images/download3.png" class="navlogo"> Super Admin</button>
   <div class="dropdown-menu" id="myDropdown">
             <div class="abc" id="adminDropdown1">
               <center>
                 <img src="../images/download3.png" class="dropImg">
-                <h4>Username</h4>
-                <h4 class="emailresponsive">abcd1234@gmail.com</h4>
+                <h4>E-mail</h4>
+                <h4 class="emailresponsive">abcd123@gmail.com</h4>
               </center>
             </div>
-              <div class="col-sm-12" id="adminDropdown2">
+              <div class="col-sm-12 col-xs-12" id="adminDropdown2">
+                <div class="col-sm-12" id="adminDropdown2">
                 <a href=""><button type="submit" class="btn btn-primary">My Profile</button></a>
               <div class="pull-right">
               <a href=""><button type="button" class="btn btn-danger">Logout</button></a>
               </div>
+            </div>
             </div>
           </div>
   
@@ -84,11 +84,18 @@
                 <h4 class="emailresponsive">abcd1234@gmail.com</h4>
               </center>
             </div>
-              <div class="col-sm-12" id="adminDropdown2">
-                <a href=""><button type="submit" class="btn btn-primary">My Profile</button></a>
-              <div class="pull-right">
+              <div class="col-lg-12 col-md-12 " id="adminDropdown2">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5 " id="">
+                <a href="my_profile.html"><button type="submit" class="btn btn-warning" style="white-space: nowrap;">My Profile</button></a>
+             </div>
+             <div class="col-lg-2 col-md-2 " id=""></div>
+             <div class="col-lg-5 col-md-5 " id="">
+                <div class="pull-right">
               <a href=""><button type="button" class="btn btn-danger">Logout</button></a>
-              </div>
+          </div>
+            </div>
+            </div>
             </div>
           </div>
   
@@ -101,6 +108,7 @@
         <div class="app-main">
                 <div class="app-sidebar sidebar-shadow">
                     <div class="app-header__logo">
+
                        <div class="logo-src"></div>
                         <div class="header__pane ml-auto">
                             <div>
@@ -136,11 +144,11 @@
                                 <li>
                                     <a href="superAdminDashboard.html" class="mm-active">
                                         <i class="metismenu-icon pe-7s-rocket"></i>
-                                        Super Admin Dashboard
+                                        Super Admin Dashboard 
                                     </a>
                                 </li>
                                
-                                <li>
+                                <li class="mm-active">
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-diamond"></i>
                                         Master Setup
@@ -191,13 +199,13 @@
 
                              
                                
-                                <li>
+                                <li class="mm-active">
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-settings"></i>
                                         Settings
                                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                     </a>
-                                    <ul class="mm-collapse mm-show">
+                                    <ul  class="mm-collapse mm-show">
                                         <li>
                                             <a href="my_profile.html">
                                                 <i class="metismenu-icon"></i>
@@ -205,7 +213,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="change_password.html">
                                                 <i class="metismenu-icon">
                                                 </i>Change Password
                                             </a>
@@ -229,65 +237,97 @@
                    <div class="app-main__outer">
         <!-- ----------------content---------------------- -->
                     <div class="app-main__inner">
-                                  
-                       <div class="row">
-                           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+<!--Remaining section-->
+   <div class="row">
+                           <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                
                            </div>
-                             <div class="col-lg-6 col-md-6 col-sm-12 colxs-12">
+                             <div class="col-lg-8 col-md-8 col-sm-12 colxs-12">
                             
                             <div class="card">
                                 <div class="card-body">
                                         <form class="validate-form">
-                                             <h4 class="changepass">Change Password</h4>
-                                               
-                                                    <div class="col-12 col-sm-12">
+                                             <h4 class="changepass">Add Division End User</h4>
+                                               <div class="row">
+                                                    <div class="col-12 col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="account-old-password">Old Password</label>
-                                                            <div class="input-group form-password-toggle input-group-merge">
-                                                                <input type="password" class="form-control" id="password-field" name="password" placeholder="Old Password" />
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text cursor-pointer">
-                                                                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <label for="account-username">Full Name</label>
+                                                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Full Name" value="" />
                                                         </div>
                                                     </div>
-                                              
-                                                
-                                                    <div class="col-12 col-sm-12">
+                                                    <div class="col-12 col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="account-new-password">New Password</label>
-                                                            <div class="input-group form-password-toggle input-group-merge">
-                                                                <input type="password" id="password-field2" name="new-password" class="form-control" placeholder="New Password" />
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text cursor-pointer">
-                                                                       <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <label for="account-username">Email Id</label>
+                                                            <input type="text" class="form-control" id="mail" name="mail" placeholder="Email Id" value="" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-12">
+                                                    <div class="col-12 col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="account-retype-new-password">Retype New Password</label>
-                                                            <div class="input-group form-password-toggle input-group-merge">
-                                                                <input type="password" class="form-control" id="password-field3" name="confirm-new-password" placeholder="New Password" />
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text cursor-pointer">
-                                                                        <span toggle="#password-field3" class="fa fa-fw fa-eye field-icon toggle-password3"></span>
-                                                                </div>
-                                                            </div>
+                                                            <label for="account-username">Phone No.</label>
+                                                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone No." value="" />
                                                         </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label> Company Name</label>
+                                                        <select class="select2 form-control" 
+                                                         id="companyId" name="companyId">
+                                                                <option value='selectedParty'>Company Name</option>
+                                                                
+                                                           
+                                                        </select>
                                                     </div>
                                                 </div>
+                                                  <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label> Company Admin Name</label>
+                                                        <select class="select2 form-control" 
+                                                         id="cAdminId" name="cAdminId">
+                                                                
+                                                                
+                                                           
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                
+
+                                                      <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label> Division Admin</label>
+                                                        <select class="select2 form-control" 
+                                                         id="divisionAdminId" name="divisionAdminId">
+                                                              
+                                                                
+                                                           
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                             
+                                                      
+                                                   
+                                                     <div class="col-12 col-sm-6">
+                                                         <label for="account-e-mail">Photo</label>
+                                                        <div class="form-group">
+                                                             <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="customFile" />
+                                                    <label class="custom-file-label" for="customFile">choose file</label>
+                                                </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 mt-75">
+                                                       
+                                                    </div>
                                                     <div class="col-12">
                                                         <div class="bttons">
-                                                        <button type="submit" class="btn btn-primary mr-1 mt-1">Save changes</button>
-                                                        <button type="reset" class="btn btn-outline-secondary mt-1">Cancel</button>
+                                                        <button type="submit" onclick="saveDivisionEndUser()" class="btn btn-primary mt-2 mr-1">Save</button>
+                                                        <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
                                                     </div>
                                                     </div>
+                                                </div>
+                                                  
+                                              
                                              
                                             </form>
                                 
@@ -299,7 +339,9 @@
                         
                         
                     </div>
-         <!-- ----------------content--end-------------------- -->            
+
+ 
+  <!-- ----------------content--end-------------------- -->            
                     <div class="app-wrapper-footer">
                         <div class="app-footer">
                             <div class="app-footer__inner">
@@ -356,41 +398,113 @@ window.onclick = function(event) {
   }
 }
 </script>
-<script>
-    $(".toggle-password").click(function() {
+                                  
 
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
-</script>
-<script>
-    $(".toggle-password2").click(function() {
 
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
-</script>
+<!-- ----------------addBtn---------------- -->
 <script>
-    $(".toggle-password3").click(function() {
+     $(document).ready(function(){ 
+      $.ajax({
+                
+             url:"http://localhost:8088/findAllCompanyName",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var cname=response[i].cname;
+                    var cid=response[i].cid;
+                    $('#companyId').append("<option id="+response[i].cid+" value="+response[i].cid+">"+cname+"</option>");
+                    
+                }
 
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+          $.ajax({
+                
+             url:"http://localhost:8088/getAllDivisionAdminDetails",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var divisionAdminId=response[i].divisionAdminId;
+                    var fullName=response[i].fullName;
+                    $('#divisionAdminId').append("<option id="+response[i].divisionAdminId+" value="+response[i].divisionAdminId+">"+fullName+"</option>");
+                    
+                }
+
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+            $.ajax({
+                
+             url:"http://localhost:8088/getAllCompanyAdminDetails",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var fullName=response[i].fullName;
+                    var cAdminId=response[i].cAdminId;
+                    $('#cAdminId').append("<option id="+response[i].cAdminId+" value="+response[i].cAdminId+">"+fullName+"</option>");
+                    
+                }
+
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+       });
+
+
+
+    function saveDivisionEndUser(){
+    var fullName=$('#fullName').val(); 
+    var mail=$('#mail').val();
+    var phoneNumber=$('#phoneNumber').val();
+    var companyId=$('#companyId').val();
+    var companyAdminId=$('#cAdminId').val();
+     var divisionAdminId=$('#divisionAdminId').val();
+   
+    var jsonObject={'fullName':fullName,'mail':mail,
+   'phoneNumber':phoneNumber,'companyId':companyId,'companyAdminId':companyAdminId,'divisionAdminId':divisionAdminId};
+    console.warn(jsonObject);
+    alert(jsonObject);
+
+       $.ajax({
+        headers:{
+        'Access-Control-Allow-Origin': '*',
+        'content-type': 'application/json; charset=utf-8',
+        'cache-control': 'no-cache',
+        'host': 'localhost:8080',
+        'origin': 'http://createOrUpdateDivisionEndUser'
+                  },
+    url:"http://localhost:8088/createOrUpdateDivisionEndUser",
+    method:"POST",
+    dataType:"JSON",
+    data:jsonObject,
+    data:JSON.stringify(jsonObject),
+    success:function(response){
+      alert("data saved");
+    console.log(response); 
+  }, error:function(error){
+      alert("Errrror");
+    }
+
+  });
+
+
+    
+ }
+    
 </script>
+   
 </body>
 </html>

@@ -3,19 +3,14 @@
 <html lang="en">
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"></link>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"></link> -->
 
-<!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <meta charset="utf-8">
 
 <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></link>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link> -->
 <link rel="stylesheet" href="superAdminDashboard.css"></link>
 
 <!-- 
@@ -39,8 +34,74 @@
 <script type="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script type="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
 <style>
+      .modal-backdrop.show{
+        position: inherit;
+    }
+    .modal.show .modal-dialog{margin-left: 326px;}
+    .modal-content{
+        margin-top: 80px;
+    }
     .dataTables_length{margin-left: 655px;}
-    .modal-dialog{max-width: 800px!important;}
+    .modal-dialog{max-width: 800px!important;}                                                                                  
+     .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}                                                                                                                                             
 </style>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -270,13 +331,13 @@
                                 <div class="card-body">
                                       <!-- ----------table------------- --> 
 <div class="col-xs-12 form-group">
-        <button class="btn pull-right add" style="margin-top: 20px; background-color: #005f98; border-radius: 5px;" ><a href="addCompanyAdmin.html" style="color: white;"><i class="fa fa-plus" aria-hidden="true"></i> Add Company Admin</a></button>
+        <button class="btn pull-right add" style="margin-top: 20px; background-color: #005f98; border-radius: 5px;" ><a href="addDivisionAdmin.html" style="color: white;"><i class="fa fa-plus" aria-hidden="true"></i> Add Division Admin</a></button>
       </div>
       <div class="container col-xs-12">
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="head panel-heading">
-                <h4>Company Admin List</h4>
+                <h4>Division Admin List</h4>
             </div>
     
 
@@ -286,11 +347,13 @@
     <table class="datatable-basic table table-striped nowrap table1" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Admin Name</th>
+                <th>Sl No.</th>
+                <th>Division Admin</th>
                 <th>Company Name</th>
-                <th>Email</th>
                 <th>Phone No.</th>
                 <th>Action</th>
+                <th>Status</th>
+
               
             </tr>
         </thead>
@@ -328,8 +391,9 @@
                         
                         
                         
-                    </div>
-         <!-- ----------------content--end-------------------- -->            
+                    
+         <!-- ----------------content--end-------------------- -->     
+         </div>       
                     <div class="app-wrapper-footer">
                         <div class="app-footer">
                             <div class="app-footer__inner">
@@ -351,7 +415,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">                      
-    <h4 class="modal-title"><b>Edit Company Admin</b></h4>
+    <h4 class="modal-title"><b>Edit Division Admin</b></h4>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 </div>          
             <form>
@@ -359,56 +423,45 @@
                         <div class="row">
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
-                                                            <input type="hidden" id="cid" name="cid">
+                                                            <input type="hidden" id="divisionAdminId" name="divisionAdminId">
                                                             <label for="account-username">Full Name</label>
-                                                            <input type="text" class="form-control" id="cname" name="cname" placeholder="username" value="" />
+                                                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="username" value="" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
-                                                            <input type="hidden" id="cid" name="cid">
                                                             <label for="account-username">Email Id</label>
-                                                            <input type="text" class="form-control" id="cname" name="cname" placeholder="Email Id" value="" />
+                                                            <input type="text" class="form-control" id="emailId" name="emailId" placeholder="Email Id" value="" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <input type="hidden" id="cid" name="cid">
                                                             <label for="account-username">Phone No.</label>
-                                                            <input type="text" class="form-control" id="cname" name="cname" placeholder="Full Name" value="" />
+                                                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone No." value="" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label>Company Name</label>
                                                         <select class="select2 form-control" 
-                                                         id="ctype" name="ctype">
-                                                                <option value='selectedParty'> Company Name</option>
-                                                                <option value="MANUFACTURER">MANUFACTURER</option>
-                                                                <option value="DISTRIBUTOR">DISTRIBUTOR</option>
-                                                                <option value="OTHER">OTHER</option>
-                                                           
+                                                         id="companyId" name="companyId">
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
                                                  <div class="col-12 col-sm-6">
                                                         <div class="form-group">
-                                                            <label>Division Name</label>
-                                                        <select class="select2 form-control" 
-                                                         id="ctype" name="ctype">
-                                                                <option value='selectedParty'> Company Name</option>
-                                                                <option value="MANUFACTURER">MANUFACTURER</option>
-                                                                <option value="DISTRIBUTOR">DISTRIBUTOR</option>
-                                                                <option value="OTHER">OTHER</option>
-                                                           
-                                                        </select>
+                                                            <label for="account-e-mail">Division Admin</label>
+                                                            <input type="text" class="form-control" 
+                                                            id="divisionName" name="divisionName" placeholder="Password" value="" />
+                                                        </div>
                                                     </div>
-                                                </div>
                                                       <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-e-mail">Password</label>
-                                                            <input type="text" class="form-control" 
-                                                            id="cRegisterdAddress" name="cRegisterdAddress" placeholder="Password" value="" />
+                                                            <input type="password" class="form-control" 
+                                                            id="password" name="password" placeholder="Password" value="" />
                                                         </div>
                                                     </div>
                                                      <div class="col-12 col-sm-6">
@@ -433,7 +486,7 @@
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="bttons">
-                                                        <button type="button" onclick="updateCompany()" class="btn btn-primary mt-2 mr-1">Save Changes</button>
+                                                        <button type="button" onclick="updateDivisionAdmin()" class="btn btn-primary mt-2 mr-1">Save Changes</button>
                                                         <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
                                                     </div>
                                                     </div>
@@ -446,7 +499,87 @@
             </div>
         </div>
     </div>
-<script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script>
+
+         <!-- -------------Modl 2-------------- -->
+  
+     <div class="modal left fade" id="editEmployeeModal2" tabindex="" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">                      
+    <h4 class="modal-title"><b>View Division Admin</b></h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>          
+            <form>
+                <div class="modal-body">
+                        <div class="row">
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="hidden" id="divisionAdminIdView" name="divisionAdminIdView">
+                                                            <label for="account-username">Full Name</label>
+                                                            <input type="text" class="form-control" id="fullNameView" name="fullNameView" placeholder="username" value="" disabled />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="account-username">Email Id</label>
+                                                            <input type="text" class="form-control" id="emailIdView" name="emailIdView" placeholder="Email Id" value="" disabled/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="hidden" id="cid" name="cid">
+                                                            <label for="account-username">Phone No.</label>
+                                                            <input type="text" class="form-control" id="phoneNumberView" name="phoneNumberView" placeholder="Phone No." value="" disabled/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label>Company Name</label>
+                                                        <select class="select2 form-control" 
+                                                         id="companyIdView" name="companyIdView" disabled>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="account-e-mail">Division Admin</label>
+                                                            <input type="text" class="form-control" 
+                                                            id="divisionNameView" name="divisionNameView" placeholder="Password" value="" disabled/>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                     <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="account-e-mail">Id Proof</label>
+                                                            <input type="text" class="form-control" 
+                                                            id="cOperationalAddress" name="cOperationalAddress" placeholder="Id Proof" value="" disabled/>
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-12 col-sm-6">
+                                                         <label for="account-e-mail">Photo</label>
+                                                        <div class="form-group">
+                                                             <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="customFile" disabled/>
+                                                    <label class="custom-file-label" for="customFile">choose file</label>
+                                                </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 mt-75">
+                                                       
+                                                    </div>
+                                                   
+                                                </div>
+                </div>
+            </form>
+                <div class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script> -->
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -490,26 +623,151 @@ window.onclick = function(event) {
 }
 </script>
 <script>
-    
-</script>
+        $(document).ready(function(){
+        $.ajax( {
+    url:"http://localhost:8088/getAllDivisionAdminDetails",
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response);
+       for(i=0; i<response.length; i++){
+           
+       var divisionAdminId=response[i].divisionAdminId;
+       var fullName=response[i].fullName; 
+       var emailId=response[i].emailId;
+       var phoneNumber=response[i].phoneNumber;
+       var company=response[i].company.cname;
+       var enabled=response[i].enabled;  
+       if(enabled){
+        var enableStatus="<label class='switch'><input type='checkbox' onclick='checkboxBtn("+divisionAdminId+")' id='checkboxBTN' value='"+enabled+"' checked><span class='slider'></span></label>";
+       }else{
+        var enableStatus="<label class='switch'><input type='checkbox' onclick='checkboxBtn("+divisionAdminId+")' id='checkboxBTN' value='"+enabled+"'><span class='slider'></span></label>";
 
-<!-- ------------------edit here-------------------- -->
-<!-- <script>
-    function companyEdit(cid){
-        alert("hello");
-     // $('#editEmployeeModal1').modal('show');
-     
-     $.ajax( {
-    url:"http://localhost:8080/getCompanyByCompanyId/"+cid,
+       }
+      
+      tableData="<tr><td></td><td>"+fullName+"</td><td>"+company+"</td><td>"+phoneNumber+"</td><td><button type='button'  class='btn btn-success btn-icon-only btn-sm' data-toggle='modal' data-target='#editEmployeeModal2' onclick='divisionAdminView("+divisionAdminId+")'> View</button><button type='button'  class='btn btn-primary btn-icon-only btn-sm' data-toggle='modal' data-target='#editEmployeeModal1' onclick='divisionAdminEdit("+divisionAdminId+")'> Edit</button></td><td>"+enableStatus+"</td></tr>";
+       $("#companyTable").append(tableData);
+      
+
+     }
+
+
+    $('.table1').DataTable(
+        {    
+            "fnRowCallback" : function(nRow, aData, iDisplayIndex){
+                $("td:first", nRow).html(iDisplayIndex +1);
+               return nRow;
+            },
+            "dom": '<"dt-buttons"Bf><"clear">lirtp',
+            "paging": true,
+            "autoWidth": true,
+            "buttons": [
+                
+            ]
+        }
+    );
+
+      
+    }, error:function(error){
+      alert("Errrror");
+    }
+
+  });
+    });
+</script>
+<script>
+
+
+
+     function checkboxBtn(divisionAdminId){
+        
+         $.ajax( {
+    url:"http://localhost:8088/getDivisionAdminById/"+divisionAdminId,
     method:"GET",
     dataType:"JSON",
     success:function(response){
     console.log(response); 
-    $("#cid").val(response.cid);
-    $("#cname").val(response.cname);
-    $("#ctype").val(response.ctype); 
-    $("#cRegisterdAddress").val(response.cRegisterdAddress);
-    $("#cOperationalAddress").val(response.cOperationalAddress);
+    var cid=response.cid;
+    var enabled=response.enabled;
+   
+    if(enabled == false){
+                     $.ajax( {
+    url:"http://localhost:8088/enableDivisionAdmin/"+divisionAdminId,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+   alert("Division enabled")
+  }, error:function(error){
+      alert("Division Admin enabled");
+    }
+
+  });
+    }else{
+         $.ajax( {
+    url:"http://localhost:8088/disableDivisionAdmin/"+divisionAdminId,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+   alert("Division  Admin disabled")
+  }, error:function(error){
+      alert("disable Errrror");
+    }
+
+  });
+
+    }
+    
+  }, error:function(error){
+      alert("Errrror");
+    }
+
+  });
+}
+
+
+
+    
+</script>
+<script>
+
+     $.ajax({
+                
+             url:"http://localhost:8088/findAllCompanyName",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var cname=response[i].cname;
+                    var cid=response[i].cid;
+                    $('#companyIdView').append("<option id="+response[i].cid+" value="+response[i].cid+">"+cname+"</option>");
+                    
+                }
+
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+
+     function divisionAdminView(divisionAdminId){
+     
+     
+     $.ajax({
+    url:"http://localhost:8088/getDivisionAdminById/"+divisionAdminId,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+    $("#divisionAdminIdView").val(response.divisionAdminId);
+    $("#fullNameView").val(response.fullName);
+    $("#emailIdView").val(response.emailId); 
+      $("#companyIdView").val(response.company.cid); 
+    $("#divisionNameView").val(response.divisionName); 
+    $("#phoneNumberView").val(response.phoneNumber);
+    $("#passwordView").val(response.password);
   
   }, error:function(error){
       alert("Errrror");
@@ -517,14 +775,116 @@ window.onclick = function(event) {
 
   });
 }
-</script> -->
+</script>
+<!-- ------------------edit here-------------------- -->
+<script>
+      $.ajax({
+                
+             url:"http://localhost:8088/findAllCompanyName",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var cname=response[i].cname;
+                    var cid=response[i].cid;
+                    $('#companyId').append("<option id="+response[i].cid+" value="+response[i].cid+">"+cname+"</option>");
+                    
+                }
+
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+
+
+
+
+
+    function divisionAdminEdit(divisionAdminId){
+     
+     $.ajax({
+    url:"http://localhost:8088/getDivisionAdminById/"+divisionAdminId,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+    $("#divisionAdminId").val(response.divisionAdminId);
+    $("#fullName").val(response.fullName);
+    $("#emailId").val(response.emailId); 
+    $("#companyId").val(response.company.cid).change(); 
+    $("#divisionName").val(response.divisionName); 
+    $("#phoneNumber").val(response.phoneNumber);
+    $("#password").val(response.password);
+  
+  }, error:function(error){
+      alert("Errrror");
+    }
+
+  });
+}
+
+
+   
+</script>
 <!-- ------------update here--------------- -->
 <script>
+    function updateDivisionAdmin(){
+       var divisionAdminId=$("#divisionAdminId").val();
+        var companyId=$("#companyId").val();
+       var fullName=$("#fullName").val();
+       var emailId=$("#emailId").val();
+       var phoneNumber=$("#phoneNumber").val();
+       var divisionName=$("#divisionName").val();
+       var password=$("#password").val();
 
-</script>
-<script>
+       var jsonObject={'divisionAdminId':divisionAdminId,'companyId':parseInt(companyId),'fullName':fullName,'emailId':emailId,'divisionName':divisionName,'phoneNumber':phoneNumber,'password':password};
+       console.log(jsonObject);
 
+       $.ajax( {
+        headers:{   
+        'Access-Control-Allow-Origin': '*',
+        'content-type': 'application/json; charset=utf-8',
+        'cache-control': 'no-cache',
+        'host': 'localhost:8088 ',
+        'origin': 'http://localhost:8080/createOrUpdateDivisionAdmin'
+                  },
+    url:"http://localhost:8088/createOrUpdateDivisionAdmin",
+    method:"POST",
+    dataType:"JSON",
+    data:JSON.stringify(jsonObject),
+    success:function(response){
+      alert("data updated");
+    console.log(response); 
+  }, error:function(error){
+      alert("Errrror in update");
+    }
+
+  });
+    }
 </script>
+<!-- <script>
+    function deleteCompany(cid){
+        var confirmation = confirm("Are you sure you want to delete this??");
+        if(confirmation){
+    $.ajax( {
+    url:"http://localhost:8088/deleteCompanyDetailsById/"+cid,
+    method:"DELETE",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+    alert("Data Deleted Successfully");
+    
+ 
+  }, error:function(error){
+      alert("Data cannot deleted now");
+    }
+
+  });
+     }
+    }
+</script> -->
 
 </body>
 </html>

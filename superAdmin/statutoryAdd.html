@@ -83,7 +83,7 @@
               <center>
                 <img src="../images/download3.png" class="dropImg">
                 <h4>Username</h4>
-                <h4 class="emailresponsive">abcd1234@gmail.com</h4>
+                <h4 class="emailresponsive">xxxxxx1234@gmail.com</h4>
               </center>
             </div>
               <div class="col-sm-12" id="adminDropdown2">
@@ -245,22 +245,33 @@
                                                <div class="row">
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
-                                                            <label for="account-username">statutory Name</label>
-                                                            <input type="text" class="form-control" id="statutoryName" name="statutoryName" placeholder="Statutory Name" value="" />
+                                                            <label for="account-username">Statutory Name</label>
+                                                             <input type='text' class="form-control" 
+                                                            id="statutoryName" name="statutoryName" placeholder="Statutory Name" value="" />
+                                                            
+                                                            
                                                         </div>
                                                     </div>
                                                   
                                                       <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-e-mail">Frequency</label>
-                                                            <input type="text" class="form-control" 
-                                                            id="frequency" name="frequency" placeholder="Frequency" value="" />
+                                                             <select class="select2 form-control" 
+                                                              id="frequency" name="frequency">
+                                                                <option value='select frequency'> Select Frequency</option>
+                                                                <option value='MONTHLY'> Monthly</option>
+                                                                <option value="QUATERLY">Quaterly</option>
+                                                                <option value="HALFYEARLY">Half Yearly</option>
+                                                                <option value="YEARLY">Yearly</option>
+                                                           
+                                                        </select>
+                                                          
                                                         </div>
                                                     </div>
                                                      <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-e-mail">Last Date</label>
-                                                            <input class="form-control" 
+                                                            <input type="date" class="form-control" 
                                                             id="lastDate" name="lastDate" placeholder="Last Date" value="" />
                                                         </div>
                                                     </div>
@@ -288,8 +299,9 @@
                         
                         
                         
-                    </div>
-         <!-- ----------------content--end-------------------- -->            
+                   
+         <!-- ----------------content--end-------------------- -->
+          </div>            
                     <div class="app-wrapper-footer">
                         <div class="app-footer">
                             <div class="app-footer__inner">
@@ -303,7 +315,8 @@
 
                
     </div>
-<!-- <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script> -->
+</div>
+<script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script>
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -352,14 +365,14 @@ window.onclick = function(event) {
 <script>
    
     function saveStatutory(){
-     alert("hii ");
     var statutoryName=$('#statutoryName').val(); 
-    alert(statutoryName);
-
-   
+    
     var frequency=$('#frequency').val();
     var lastDate=$('#lastDate').val();
-  
+  // var date = "2016-10-15";
+lastDate = lastDate.split("-").reverse().join("-");
+console.log(lastDate);
+  alert(lastDate)
    
     var jsonObject={'statutoryName':statutoryName,'frequency':frequency,
    'lastDate':lastDate};
@@ -371,16 +384,16 @@ alert(jsonObject);
         'Access-Control-Allow-Origin': '*',
         'content-type': 'application/json; charset=utf-8',
         'cache-control': 'no-cache',
-        'host': 'localhost:8080',
+        'host': 'localhost:8088',
         'origin': 'http://createStatutory'
                   },
-    url:"http://localhost:8080/createStatutory",
+    url:"http://localhost:8088/createStatutory",
     method:"POST",
     dataType:"JSON",
     data:jsonObject,
     data:JSON.stringify(jsonObject),
     success:function(response){
-      alert("data saved");
+     alert("Statutory Added  Successfully...");
     console.log(response); 
   }, error:function(error){
       alert("Errrror");

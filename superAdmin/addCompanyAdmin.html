@@ -8,12 +8,7 @@
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"></link>
 
-<!-- jQuery library -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script> -->
 
-<!-- Popper JS -->
-<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
- 
 
 <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></link>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -257,19 +252,19 @@
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-username">Full Name</label>
-                                                            <input type="text" class="form-control" id="cname" name="cname" placeholder="Full Name" value="" />
+                                                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Full Name" value="" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-username">Email Id</label>
-                                                            <input type="text" class="form-control" id="cname" name="cname" placeholder="Email Id" value="" />
+                                                            <input type="text" class="form-control" id="emailId" name="emailId" placeholder="Email Id" value="" />
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-username">Phone No.</label>
-                                                            <input type="text" class="form-control" id="cname" name="cname" placeholder="Phone No." value="" />
+                                                            <input type="text" class="form-control" id="phNumber" name="phNumber" placeholder="Phone No." value="" />
                                                         </div>
                                                     </div>
                                                     
@@ -277,37 +272,33 @@
                                                         <div class="form-group">
                                                             <label> Company Name</label>
                                                         <select class="select2 form-control" 
-                                                         id="ctype" name="ctype">
+                                                         id="companyId" name="companyId">
                                                                 <option value='selectedParty'>Company Name</option>
-                                                                <option value="MANUFACTURER">P-DR</option>
-                                                                <option value="DISTRIBUTOR">Steel</option>
-                                                                <option value="OTHER">Retails</option>
-                                                                <option value="OTHER">Sponges</option>
-                                                                <option value="OTHER">Mining</option>
-                                                                <option value="OTHER">Hospitality</option>
+                                                                
                                                            
                                                         </select>
                                                     </div>
                                                 </div>
-                                                      <div class="col-12 col-sm-6">
+                                                 <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-e-mail">Password</label>
-                                                            <input type="text" class="form-control" 
-                                                            id="cRegisterdAddress" name="cRegisterdAddress" placeholder="company registered address" value="" />
+                                                            <input type="password" class="form-control" 
+                                                            id="password" name="password" placeholder="Password" value="" />
                                                         </div>
                                                     </div>
+                                                      
                                                      <div class="col-12 col-sm-6">
                                                         <div class="form-group">
                                                             <label for="account-e-mail">Id Proof</label>
                                                             <input type="text" class="form-control" 
-                                                            id="cOperationalAddress" name="cOperationalAddress" placeholder="company operational address" value="" />
+                                                            id="cOperationalAddress" name="Id Proof" placeholder="Id Proof" value="" />
                                                         </div>
                                                     </div>
                                                      <div class="col-12 col-sm-6">
                                                          <label for="account-e-mail">Photo</label>
                                                         <div class="form-group">
                                                              <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFile" />
+                                                    <input type="image" class="custom-file-input" id="customFile" />
                                                     <label class="custom-file-label" for="customFile">choose file</label>
                                                 </div>
                                                         </div>
@@ -318,7 +309,7 @@
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="bttons">
-                                                        <button type="submit" onclick="saveCompany()" class="btn btn-primary mt-2 mr-1">Save</button>
+                                                        <button type="submit" onclick="saveCompanyAdmin()" class="btn btn-primary mt-2 mr-1">Save</button>
                                                         <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
                                                     </div>
                                                     </div>
@@ -396,26 +387,43 @@ window.onclick = function(event) {
 }
 </script>
                                   
-                     
-         
-
-<!-- ----------------addBtn---------------- -->
 <script>
-   
-    function saveCompany(){
-     alert("hii company");
-    var cname=$('#cname').val(); 
-    alert(cname);
+      $(document).ready(function(){ 
+      $.ajax({
+                
+             url:"http://localhost:8088/findAllCompanyName",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var cname=response[i].cname;
+                    var cid=response[i].cid;
+                    $('#companyId').append("<option id="+response[i].cid+" value="+response[i].cid+">"+cname+"</option>");
+                    
+                }
+
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+       });
+
+
+
+ function saveCompanyAdmin(){
+    var fullName=$('#fullName').val(); 
+    var emailId=$('#emailId').val();
+    var phNumber=$('#phNumber').val();
+    var password=$('#password').val();
+    var companyId=$('#companyId').val();
+
 
    
-    var ctype=$('#ctype').val();
-    var cRegisterdAddress=$('#cRegisterdAddress').val();
-    var cOperationalAddress=$('#cOperationalAddress').val();
-   
-    var jsonObject={'cname':cname,'ctype':ctype,
-   'cRegisterdAddress':cRegisterdAddress,'cOperationalAddress':cOperationalAddress};
+    var jsonObject={'fullName':fullName,'emailId':emailId,
+   'phNumber':phNumber,'password':password,'companyId':companyId};
     console.warn(jsonObject);
-alert(jsonObject);
 
        $.ajax({
         headers:{
@@ -423,15 +431,15 @@ alert(jsonObject);
         'content-type': 'application/json; charset=utf-8',
         'cache-control': 'no-cache',
         'host': 'localhost:8080',
-        'origin': 'http://createCompanyData'
+        'origin': 'http://createOrUpdateCompanyAdminDetails'
                   },
-    url:"http://localhost:8080/createCompanyData",
+    url:"http://localhost:8088/createOrUpdateCompanyAdminDetails",
     method:"POST",
     dataType:"JSON",
     data:jsonObject,
     data:JSON.stringify(jsonObject),
     success:function(response){
-      alert("data saved");
+      alert("Company Admin Added Successfully");
     console.log(response); 
   }, error:function(error){
       alert("Errrror");
@@ -439,23 +447,16 @@ alert(jsonObject);
 
   });
 
-  //       $.ajax( {
-  //   url:"http://localhost:8080/createCompanyData",
-  //   method:"POST",
-  //   dataType:"JSON",
-  //   
-  //   success:function(response){
-  //       alert("hiiii");
-  //   console.log(response);
-      
-      
-  //   }, error:function(error){
-  //     alert("Errrror");
-  //   }
 
-  // });
     
  }
+</script>                     
+         
+
+<!-- ----------------addBtn---------------- -->
+<script>
+   
+
     
 </script>
    

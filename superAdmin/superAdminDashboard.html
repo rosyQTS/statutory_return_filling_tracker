@@ -7,16 +7,16 @@
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <meta charset="utf-8">
 
 <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 <link rel="stylesheet" href="superAdminDashboard.css"></link>
+<style>
+    .carddivs{margin-top: 20px!important;}
+</style>
+</head>
+
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -234,15 +234,23 @@
 
 <!-- --------------sidebar end----------------- -->
                    <div class="app-main__outer">
-        <!-- ----------------content---------------------- -->
+        
                     <div class="app-main__inner">
-                                  
+                        <!-- ----------------content---stRT------------------- -->
+                             
+                        
+                    <div class="row match-height"id="test12">
+                        <!-- Avg Sessions Chart Card starts -->
+                       
+                           
+                       
+                       
+                    </div>                        
                         
                         
-                        
-                        
-                    </div>
-         <!-- ----------------content--end-------------------- -->            
+                   
+         <!-- ----------------content--end-------------------- --> 
+          </div>           
                     <div class="app-wrapper-footer">
                         <div class="app-footer">
                             <div class="app-footer__inner">
@@ -298,6 +306,36 @@ window.onclick = function(event) {
     }
   }
 }
+</script>
+<script>
+        $(document).ready(function(){ 
+        $.ajax( {
+    url:"http://localhost:8088/getAllStatutory",
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response);
+       for(i=0; i<response.length; i++){
+           
+       var statutoryId=response[i].statutoryId;
+       var statutoryName=response[i].statutoryName; 
+       var frequency=response[i].frequency;
+       var lastDate=response[i].lastDate;
+       
+
+    var templateString = '  <div class="col-lg-3 col-12"><div class="card" style="margin-top:20px!important;"><div class="card-body" ><div class="row pb-50"><div class="col-sm-6 col-12 d-flex justify-content-between flex-column order-sm-1 order-2 mt-1 mt-sm-0"><div class="mb-1 mb-sm-0" ><p class="card-text font-weight-bold mb-2">Statutory Report Tracker</p></div></div><div class="col-sm-6 col-12 d-flex justify-content-between flex-column order-sm-1 order-2 mt-1 mt-sm-0"><div class="mb-1 mb-sm-0" ><span class="font-weight-bold" style="float: right;">'+statutoryName+'</span></div> </div></div><div class="row"><div class="col-sm-12 col-12 d-flex justify-content-between flex-column order-sm-1 order-2 mt-1 mt-sm-0"><div class="mb-1 mb-sm-0" ></div><button type="button" class="btn btn-primary">'+frequency+'</button></div></div><div class="row"><div class="col-sm-12 col-12 d-flex justify-content-between flex-column order-sm-1 order-2 mt-1 mt-sm-0"><div class="mb-1 mb-sm-0" ></div><button type="button" class="btn btn-warning">Last Date : '+lastDate+'</button></div></div><hr /></div></div></div>';
+    $('#test12').append(templateString);
+
+
+     }
+
+      
+    }, error:function(error){
+      alert("Errrror");
+    }
+
+  });
+    });
 </script>
 </body>
 </html>

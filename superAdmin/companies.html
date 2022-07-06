@@ -8,10 +8,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"></link>
 
 <!-- jQuery library -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <meta charset="utf-8">
 
 <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet"></link>
@@ -27,7 +24,7 @@
 <link rel="stylesheet"  href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"></link>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.bootstrap.min.css"></link>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.colVis.min.js"></script>
@@ -37,10 +34,77 @@
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.bootstrap.min.js"></script>
 <script type="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 <script type="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script type="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script type="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/b uild/pdfmake.min.js"></script>
 <style>
+    .modal-dialog{}
+    .modal-backdrop.show{
+        position: inherit;
+    }
+    .modal.show .modal-dialog{margin-left: 326px;}
+    .modal-content{
+        margin-top: 80px;
+    }
     .dataTables_length{margin-left: 655px;}
-    .modal-dialog{max-width: 800px!important;}
+    .modal-dialog{max-width: 800px!important;}                                                                                  
+     .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 28px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}                                                                                                                                                                                                                                                                               
 </style>
 <body>
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -186,7 +250,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="Statutory.html">
+                                            <a href="statutory.html">
                                                 <i class="metismenu-icon">
                                                 </i>Statutory
                                             </a>
@@ -207,13 +271,13 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="divisionAdmin.html">
                                                 <i class="metismenu-icon">
                                                 </i>Division Admin
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="divisionEndUser.html">
                                                 <i class="metismenu-icon">
                                                 </i>Division End User
                                             </a>
@@ -270,27 +334,30 @@
                                 <div class="card-body">
                                       <!-- ----------table------------- --> 
 <div class="col-xs-12 form-group">
-        <button class="btn pull-right add" style="margin-top: 20px; background-color: #005f98; border-radius: 5px;" ><a href="addCompany.html" style="color: white;"><i class="fa fa-plus" aria-hidden="true"></i> Add Companies</a></button>
+        <button class="btn pull-right add" style="margin-top: 20px;margin-right: 28px; background-color: #005f98; border-radius: 5px;" ><a href="addCompany.html" style="color: white;"><i class="fa fa-plus" aria-hidden="true"></i> Add Companies</a></button>
       </div>
       <div class="container col-xs-12">
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="head panel-heading">
-                <h4>Company List</h4>
+                <h4>Companies List</h4>
             </div>
     
 
  
                         <div class="table-responsive" id="example">
                             
-    <table class="datatable-basic table table-striped nowrap table1" cellspacing="0" width="100%">
+    <table class="datatable-basic table table-striped nowrap table1 "  cellspacing="0" width="100%">
         <thead>
             <tr>
+                <th>Sl No.</th>
                 <th>Company Name</th>
                 <th>Company Type</th>
-                <th>Company Register Address</th>
-                <th>Company operation Address</th>
+                <th>Logo </th>
+                <!-- <th>Company Inserted At</th> -->
+               
                 <th>Action</th>
+                <th>Status</th>
               
             </tr>
         </thead>
@@ -368,11 +435,14 @@
                                                         <div class="form-group">
                                                             <label>Select Company Type</label>
                                                         <select class="select2 form-control" 
-                                                         id="ctype" name="ctype">
+                                                         id="ctypeEdit" name="ctypeEdit">
                                                                 <option value='selectedParty'>Select Company Type</option>
-                                                                <option value="MANUFACTURER">MANUFACTURER</option>
-                                                                <option value="DISTRIBUTOR">DISTRIBUTOR</option>
-                                                                <option value="OTHER">OTHER</option>
+                                                                <option value="P-DR">P-DR</option>
+                                                                <option value="Steel">Steel</option>
+                                                                <option value="Retails">Retails</option>
+                                                                <option value="Sponges">Sponges</option>
+                                                                <option value="Mining">Mining</option>
+                                                                <option value="Hospitality">Hospitality</option>
                                                            
                                                         </select>
                                                     </div>
@@ -419,6 +489,81 @@
             </div>
         </div>
     </div>
+
+
+
+         <!-- -------------Modl 2-------------- -->
+  
+     <div class="modal left fade" id="viewModal" tabindex="" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">                      
+    <h4 class="modal-title"><b>View Company</b></h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>          
+            <form>
+                <div class="modal-body">
+                        <div class="row">
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="hidden" id="cidView" name="cidView">
+                                                            <input type="hidden" id="insertedAt" name="insertedAt">
+                                                            <label for="account-username">Company Name</label>
+                                                            <input type="text" class="form-control" id="cnameView" name="cnameView" placeholder="username" value="" disabled/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label>Select Company Type</label>
+                                                        <select class="select2 form-control" 
+                                                         id="ctypeView" name="ctypeView" disabled>
+                                                                
+                                                           
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                      <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="account-e-mail">Company Registered Address</label>
+                                                            <input type="text" class="form-control" 
+                                                            id="cRegisterdAddressView" name="cRegisterdAddressView" placeholder="company registered address" value="" disabled/>
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-12 col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="account-e-mail">Company Operational Address</label>
+                                                            <input type="text" class="form-control" 
+                                                            id="cOperationalAddressView" name="cOperationalAddressView" placeholder="company operational address" value="" disabled/>
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-12 col-sm-6">
+                                                         <label for="account-e-mail">Company Logo</label>
+                                                        <div class="form-group">
+                                                             <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="customFileView" disabled/>
+                                                    <label class="custom-file-label" for="customFile">choose file</label>
+                                                </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 mt-75">
+                                                       
+                                                    </div>
+                                                   <!--  <div class="col-12">
+                                                        <div class="bttons">
+                                                        <button type="button" onclick="updateCompany()" class="btn btn-primary mt-2 mr-1">Save Changes</button>
+                                                        <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
+                                                    </div>
+                                                    </div> -->
+                                                </div>
+                </div>
+            </form>
+                <div class="modal-footer">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
 <script type="text/javascript" src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"></script>
 <script>
 /* When the user clicks on the button, 
@@ -442,8 +587,6 @@ window.onclick = function(event) {
 }
 </script>
 <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -467,27 +610,35 @@ window.onclick = function(event) {
 </script>
 <script>
         $(document).ready(function(){
-       alert("hi");
+
         $.ajax( {
-    url:"http://localhost:8080/findAllCompanyName",
+    url:"http://localhost:8088/findAllByOrderByCidDesc",
     method:"GET",
     dataType:"JSON",
-    success:function(response){
-        alert("hiiii");
+    success:function(response){ 
     console.log(response);
        for(i=0; i<response.length; i++){
            
        var cid=response[i].cid;
        var cname=response[i].cname; 
+       var cLogo=response[i].cLogo;
+       var cLogo = "<img src='"+cLogo+"' style='width: 40px;height: 40px;'/>";
        var ctype=response[i].ctype;
        var cRegisterdAddress=response[i].cRegisterdAddress;
-       var cOperationalAddress=response[i].cOperationalAddress;
-       
+       var cOperationalAddress=response[i].cOperationalAddress; 
+       var enabled=response[i].enabled; 
+     
+       var insertedAt=response[i].insertedAt; 
+       if(enabled){
+        var enableStatus="<label class='switch'><input type='checkbox' onclick='checkboxBtn("+cid+")' id='checkboxBTN' value='"+enabled+"' checked><span class='slider'></span></label>";
+       }else{
+        var enableStatus="<label class='switch'><input type='checkbox' onclick='checkboxBtn("+cid+")' id='checkboxBTN' value='"+enabled+"'><span class='slider'></span></label>";
+
+       }
 
       
-      tableData="<tr><td>"+cname+"</td><td>"+ctype+"</td><td>"+cRegisterdAddress+"</td><td>"+cOperationalAddress+"</td><td><button type='button' onclick='companyEdit("+cid+")' class='btn btn-primary btn-icon-only btn-sm' data-toggle='modal' data-target='#editEmployeeModal1'> Edit</button><button type='button' onclick='deleteCompany("+cid+")' class='btn btn-danger btn-icon-only btn-sm'> Deactivate</button></td></tr>";
+      tableData="<tr><td></td><td>"+cname+"</td><td>"+ctype+"</td><td>"+cLogo+"</td><td><button type='button' onclick='companyView("+cid+")' class='btn btn-success btn-icon-only btn-sm' data-toggle='modal' data-target='#viewModal'> View</button><button type='button' onclick='companyEdit("+cid+")' class='btn btn-primary btn-icon-only btn-sm' data-toggle='modal' data-target='#editEmployeeModal1'> Edit</button></td><td>"+enableStatus+"</td></tr>";
        $("#companyTable").append(tableData);
-      
 
      }
 
@@ -495,22 +646,22 @@ window.onclick = function(event) {
 
 
 
-      $(document).ready(function() {
-    //Only needed for the filename of export files.
-    //Normally set in the title tag of your page.
-    document.title='Simple DataTable';
-    // DataTable initialisation
     $('.table1').DataTable(
         {
+            "fnRowCallback" : function(nRow, aData, iDisplayIndex){
+                $("td:first", nRow).html(iDisplayIndex +1);
+               return nRow;
+            },
             "dom": '<"dt-buttons"Bf><"clear">lirtp',
             "paging": true,
             "autoWidth": true,
+            "bSort": false,
             "buttons": [
                 
             ]
         }
     );
-});
+
       
     }, error:function(error){
       alert("Errrror");
@@ -519,23 +670,182 @@ window.onclick = function(event) {
   });
     });
 </script>
+<script>
+
+
+
+     function checkboxBtn(cid){
+         $.ajax( {
+    url:"http://localhost:8088/getCompanyByCompanyId/"+cid,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+    var cid=response.cid;
+    var enabled=response.enabled;
+   
+    if(enabled == false){
+                     $.ajax( {
+    url:"http://localhost:8088/enableCompany/"+cid,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+   alert("Company enabled");
+  }, error:function(error){
+      alert("Company enabled");
+    }
+
+  });
+    }else{
+         $.ajax( {
+    url:"http://localhost:8088/disableCompany/"+cid,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+   alert("Company disabled")
+  }, error:function(error){
+      alert("disable Errrror");
+    }
+
+  });
+
+    }
+    
+  }, error:function(error){
+      alert("Errrror");
+    }
+
+  });
+}
+
+
+       
+//         var isChecked = $('#checkboxBTN').is(':checked');
+//         if(isChecked){
+           
+//      $.ajax( {
+//     url:"http://localhost:8088/enableCompany/"+cid,
+//     method:"GET",
+//     dataType:"JSON",
+//     success:function(response){
+//     console.log(response); 
+//    alert("Company enabled")
+//   }, error:function(error){
+//       alert("Errrror");
+//     }
+
+//   });
+
+
+// }else{
+     
+//      $.ajax( {
+//     url:"http://localhost:8088/disableCompany/"+cid,
+//     method:"GET",
+//     dataType:"JSON",
+//     success:function(response){
+//     console.log(response); 
+//    alert("Company disabled")
+//   }, error:function(error){
+//       alert("disable Errrror");
+//     }
+
+//   });
+// }
+  
+
+//      }
+    
+</script>
+<!-- ---------------------------view--------------------------- -->
+<script>
+    
+
+    function companyView(cid){
+
+        $.ajax({
+                
+             url:"http://localhost:8088/findAllCompanyName",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var cname=response[i].cname;
+                    var cid=response[i].cid;
+                    var ctype=response[i].ctype;
+                    $('#ctypeView').append("<option id="+response[i].cid+" value="+response[i].ctype+">"+ctype+"</option>");
+                    
+                }
+
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+
+     $.ajax( {
+    url:"http://localhost:8088/getCompanyByCompanyId/"+cid,
+    method:"GET",
+    dataType:"JSON",
+    success:function(response){
+    console.log(response); 
+    $("#cidView").val(response.cid);
+    $("#cnameView").val(response.cname);
+    $("#ctypeView").val(response.ctype); 
+    $("#cRegisterdAddressView").val(response.cRegisterdAddress);
+    $("#cOperationalAddressView").val(response.cOperationalAddress);
+    
+  }, error:function(error){
+      alert("Errrror");
+    }
+
+  });
+}
+</script>
 <!-- ------------------edit here-------------------- -->
 <script>
+    
+
     function companyEdit(cid){
-        alert("hello");
-     // $('#editEmployeeModal1').modal('show');
+
+$.ajax({
+                
+             url:"http://localhost:8088/findAllCompanyName",
+             method:"GET",
+             dataType: "JSON",
+            success:function(response){
+                for(i=0;i<response.length;i++){
+                    var cname=response[i].cname;
+                    var cid=response[i].cid;
+                    var ctype=response[i].ctype;
+                    $('#ctypeEdit').append("<option id="+response[i].cid+" value="+response[i].ctype+">"+ctype+"</option>");
+                    
+                }
+
+            console.log(response);
+            }, error:function(error){ 
+             alert("Errrror");
+             }
+
+         });
+
+
      
      $.ajax( {
-    url:"http://localhost:8080/getCompanyByCompanyId/"+cid,
+    url:"http://localhost:8088/getCompanyByCompanyId/"+cid,
     method:"GET",
     dataType:"JSON",
     success:function(response){
     console.log(response); 
     $("#cid").val(response.cid);
     $("#cname").val(response.cname);
-    $("#ctype").val(response.ctype); 
+    $("#ctypeEdit").val(response.ctype).change(); 
     $("#cRegisterdAddress").val(response.cRegisterdAddress);
     $("#cOperationalAddress").val(response.cOperationalAddress);
+    $("#insertedAt").val(response.insertedAt);
   
   }, error:function(error){
       alert("Errrror");
@@ -547,60 +857,44 @@ window.onclick = function(event) {
 <!-- ------------update here--------------- -->
 <script>
     function updateCompany(){
-        alert("hii");
+        alert("updating data...!")
        var cid=$("#cid").val();
        var cname=$("#cname").val();
        var ctype=$("#ctype").val();
        var cRegisterdAddress=$("#cRegisterdAddress").val();
        var cOperationalAddress=$("#cOperationalAddress").val();
+       var insertedAt=$("#insertedAt").val;
 
        var jsonObject={'cid':cid,'cname':cname,'ctype':ctype,'cRegisterdAddress':cRegisterdAddress,
        'cOperationalAddress':cOperationalAddress};
        console.log(jsonObject);
 
        $.ajax( {
-        headers:{   
+         headers:{
         'Access-Control-Allow-Origin': '*',
         'content-type': 'application/json; charset=utf-8',
         'cache-control': 'no-cache',
         'host': 'localhost:8080',
-        'origin': 'http://updateCompanyDetails'
+        'origin': 'http:/localhost:8080/updateCompanyDetails'
                   },
-    url:"http://localhost:8080/updateCompanyDetails",
-    method:"POST",
+    url:"http://localhost:8088/updateCompanyDetails",
+    method:"PUT",
     dataType:"JSON",
     data:JSON.stringify(jsonObject),
     success:function(response){
       alert("data updated");
     console.log(response); 
   }, error:function(error){
-      alert("Errrror in update");
+     alert("data updated");
     }
 
   });
     }
 </script>
-<script>
-    function deleteCompany(cid){
-        var confirmation = confirm("Are you sure you want to delete this??");
-        if(confirmation){
-    $.ajax( {
-    url:"http://localhost:8080/deleteCompanyDetailsById/"+cid,
-    method:"DELETE",
-    dataType:"JSON",
-    success:function(response){
-    console.log(response); 
-    alert("Data Deleted Successfully");
-    
- 
-  }, error:function(error){
-      alert("Errrror");
-    }
-
-  });
-     }
-    }
-</script>
+<!-- <script>
+    $("#deactivateBtn").click(function(){
+  
+</script> -->
 
 </body>
 </html>
